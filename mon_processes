@@ -1,0 +1,4 @@
+fusermount3      1000     0
+sudo             1000     0
+sudo             1000     0
+passwd           1000     0

@@ -1,0 +1,45 @@
+    1  groupadd students
+    2  useradd -u 1234 -g students user1
+    3  passwd user1
+    4  chage -M 90 user1
+    5  find / -perm -4000 -type f 2>/dev/null > ~/suid_files.out
+    6  ps -eo comm,ruid,euid | awk '$2 >= 1000 && $3 == 0' > ~/mon_processes.out
+    7  cp /usr/bin/cat /home/user1/cat_suid
+    8  chow root:root /home/user1/cat_suid
+    9  chown root:root /home/user1/cat_suid
+   10  chmod 4755 /home/user1/cat_suid
+   11  su - user1 -c "/home/user1/cat_suid /etc/shadow" | head -n 3
+   12  cp /usr/bin/chown /home/user1/chown_cap
+   13  setcap "cap_chown=ep" /home/user1/chown_cap
+   14  su - user1 -c "touch /home/user1/testfile && /home/user1/chown_cap root/ucer1/testfile"
+   15  su - user1 -c "touch /home/user1/testfile && /home/user1/chown_cap root /home/ucer1/testfile"
+   16  su - user1 -c "touch /home/user1/testfile && /home/user1/chown_cap root /home/user1/testfile"
+   17  ls -l /home/user1/testfile
+   18  visudo
+   19  su - user1 -c "sudo/usr/bin/date -s '12:35:00'"
+   20  su - user1 -c "sudo /usr/bin/date -s '12:35:00'"
+   21  visudo
+   22  su - user1 -c "sudo /usr/bin/date -s '12:50:00'"
+   23  su - user1 -c "sudo /usr/bin/date"
+   24  visudo
+   25  :wq
+   26  visudo :wq
+   27  visudo
+   28  groupadd students
+   29  useradd -u 1234 -g students user1
+   30  passwd user1
+   31  chage -M 90 user1
+   32  find / -perm -4000 -type f 2>/dev/null > ~/suid_files.out
+   33  ps -eo comm,ruid,euid | awk '$2 >= 1000 && $3 == 0' > ~/mon_processes.owt
+   34  cp /usr/bin/cat /home/user1/cat_suid
+   35  chown root:root /home/user1/cat_suid
+   36  chmod 4755 /home/user1/cat_suid
+   37  su - user1 -c "/home/user1/cat_suid /etc/shadow" | head -n 3
+   38  cp /usr/bin/chown /home/user1/chown_cap
+   39  setcap "cap_chow=ep" /home/user1/chown_cap
+   40  setcap "cap_chown=ep" /home/user1/chown_cap
+   41  su - user1 -c "touch /home/user1/testfile && /home/user1/chown_cap root /home/user1/testfile"
+   42  ls -l /home/user1/testfile
+   43  visudo
+   44  su - user1 -c "sudo /usr/bin/date -s '13:24:00'"
+   45  history > /home/user1/histori.out
